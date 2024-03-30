@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+div.container2{
+  height:100px;
+}
+
+div.container2 > h1{
+	font-family: Montserrat;
+  font-size:30px;
+	/*Set the position to relative in order to place the sidebar then.*/
+	position: relative;
+}
+@media only screen and (max-width: 600px) {
+  div.container2{
+    height:70px;
+  }
+  div.container2 > h1{
+  	font-family: Montserrat;
+    font-size:20px;
+  	/*Set the position to relative in order to place the sidebar then.*/
+  	position: relative;
+  }
+}
+/*Setup the blinking sidebar*/
+div.container2 > h1:after{
+	 	content: "";
+		/*The width is the actual sidebar thickness.*/
+    width: 2px;
+		/*The height fits to the text*/
+    height: 100%;
+    background-color: black;
+		/*Position the sidebar at the right of the text*/
+		position: absolute;
+    right: 0;
+    top: 0;
+		/*Apply the blinkking animation looping in 2 steps: visible -> hidden.*/
+    animation: blink 1s infinite steps(2, start);
+}
+
+/*Create the blinking animation by simply hide the element.*/
+@keyframes blink {
+    to{
+        visibility: hidden;
+    }
+
+}
+
+/*features*/
+.features{
+  text-align:center;
+}
+.features h2{
+    margin: 120px 0px 20px 0px;
+    font-size: 30px;
+    text-align: center;
+}
+#feat{
+  width:700px;height:350px;
+}
+
+@media only screen and (max-width: 600px) {
+  #feat{
+    width:100%;height:420px;
+  }
+}

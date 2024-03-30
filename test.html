@@ -1,0 +1,439 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyword Definitions</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanuman:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  * {
+    margin: 0px 0px 0px 0px; padding: 0px;
+    border: 0px;
+    box-sizing: border-box;
+  }
+
+  html {
+    width: 100%; height: 100%;
+  }
+
+  body {
+    background-color: #0c0c0c;
+    font: 14px Tahoma, Geneva, sans-serif;
+    text-align: center;
+    width: 100%; height: 100%;
+
+  }
+
+  h1 #optionh {
+    padding: 50px 0px 20px 0px;
+    color: #000;
+    font-size: 20px;
+  }
+
+  .dropdown {
+    margin-left:auto;
+    margin-right:auto;
+    width: 500px;
+    position: relative; /* Container for absolute positioning */
+    z-index: 2;
+
+    &:hover {
+      h1 {
+        border-radius: 5px 5px 0px 0px;
+      }
+
+      li {
+        padding: 10px;
+        border-top: 1px lighten(#333, 2%) solid;
+        height: auto;
+        overflow: auto;
+        opacity: 1;
+      }
+    }
+  }
+
+
+  .dropdown h1 {
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+    background-color: #fff;
+    color: darken(#EEE, 40%);
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+    border: 5px;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.5s linear 0s;
+
+    b {
+      color: #FF3B30FF;
+      font-weight: normal;
+    }
+
+    &:before {
+      content: '';
+      margin-top: -2px;
+      margin-right: 10px;
+      display: inline-block;
+      background-color: #FF3B30FF;
+      border-radius: 5px;
+      vertical-align: middle;
+      width: 16px; height: 16px;
+    }
+
+    &.selected-1:before {
+      background-color: #FF3B30FF;
+    }
+
+    &.selected-2:before {
+      background-color: #FF3B30FF;
+    }
+
+    &.selected-3:before {
+      background-color: #FF3B30FF;
+    }
+
+    &.selected-4:before {
+      background-color: #FF3B30FF;
+    }
+
+    &.selected-5:before {
+      background-color: #FF3B30FF;
+    }
+  }
+
+  .dropdown ul {
+    display: block;
+    position: relative;
+    list-style: none;
+  }
+
+  .dropdown li {
+    padding: 0px 10px;
+    background-color: #fff;
+    color: #000;
+    text-align: left;
+    border: 0px;
+    width: 100%; height: 0px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    transition-property: all, background-color;
+    transition-duration: 0.2s, 0.4s;
+
+    b {
+      color: #000;
+      font-weight: normal;
+    }
+
+    &:hover, &.selected {
+      background-color: #333;
+      color: #fff;
+    }
+
+
+    &:last-child {
+      border-radius: 0px 0px 5px 5px;
+    }
+
+    &:before {
+      content: '';
+      margin-top: -2px;
+      margin-right: 10px;
+      display: inline-block;
+      border-radius: 5px;
+      vertical-align: middle;
+      width: 16px; height: 16px;
+    }
+
+    &:nth-child(1) {
+      transition-delay: 0s, 0s;
+
+      &:before {
+        background-color: #FF3B30FF;
+      }
+    }
+
+    &:nth-child(2) {
+      transition-delay: 0.1s, 0s;
+
+      &:before {
+        background-color: #FF3B30FF;
+      }
+    }
+
+    &:nth-child(3) {
+      transition-delay: 0.2s, 0s;
+
+      &:before {
+        background-color: #FF3B30FF;
+      }
+    }
+
+    &:nth-child(4) {
+      transition-delay: 0.3s, 0s;
+
+      &:before {
+        background-color: #FF3B30FF;
+      }
+    }
+
+    &:nth-child(5) {
+      transition-delay: 0.4s, 0s;
+
+      &:before {
+        background-color: #FF3B30FF;
+      }
+    }
+  }
+
+  .card {
+    background-color: #fff;
+    text-align: left;
+    color: #000;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    display: none; /* Initially hidden */
+    position: absolute;
+    width: 500px; /* Same width as dropdown with padding */
+    top: 40px;;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 1; /* Ensure it appears above other content */
+  }
+
+  @media only screen and (max-width: 600px) {
+    .dropdown {
+      width: 350px;
+    }
+    .card {
+      width: 350px; /* Same width as dropdown with padding */
+    }
+  }
+
+  .dropdown ul {
+    display: none;
+  }
+
+  .dropdown:hover ul,
+  .dropdown h1:hover + ul {
+    display: block;
+  }
+
+  /* Align button to the right within the card */
+  .card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hanuman-thin {
+    font-family: "Hanuman", serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+
+  .hanuman-light {
+    font-family: "Hanuman", serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .hanuman-regular {
+    font-family: "Hanuman", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .hanuman-bold {
+    font-family: "Hanuman", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .hanuman-black {
+    font-family: "Hanuman", serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+
+
+
+  </style>
+  </head>
+  <body>
+    <div class="dropdown">
+      <h1 class="hanuman-bold" id="optionh">និយមន័យបទល្មើស</h1>
+      <ul>
+        <li class="hanuman-bold" data-value="#FF3B30FF">មាត្រា ៣៧៧.- និយមន័យនៃការឆបោក</li>
+        <li class="hanuman-bold" data-value="#FF3B30FF">មាត្រា ៣៩១.- និយមន័យនៃការរំលោភលើទំនុកចិត្ត</li>
+        <li class="hanuman-bold" data-value="#FF3B30FF">មាត្រា ៣៥៣.- និយមន័យនៃអំពើលួច</li>
+        <li class="hanuman-bold" data-value="#FF3B30FF">មាត្រា ៣៦៣.- និយមន័យនៃការកំហែងយក</li>
+        <li class="hanuman-bold" data-value="#FF3B30FF">មាត្រា ១៩៩.- បទឃាតកម្ម</li>
+      </ul>
+    </div>
+
+    <div class="card" id="definitionCard">
+        <div class="card-content">
+          <h2  class="hanuman-bold" id="selectedTitle"></h2>
+          <button id="languageSwitchInCard"><img id="kh" src="assets/img/flag.png" style="width:40px;"><img id="uk" src="assets/img/united-kingdom.png" style="width:40px;display:none;"></button>
+        </div>
+        <p  class="hanuman-regular" id="selectedDefinition"></p>
+        <div style="text-align:right;padding-top:10px;">
+          <button id="clipboard" style="color:#FF3B30FF;"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+        </div>
+      </div>
+  <script>
+  $(document).ready(function() {
+    var language = "khmer"; // Default language
+    var offenses = {
+      "មាត្រា ៣៧៧.- និយមន័យនៃការឆបោក": {
+        "english": {
+          "title": "Fraud",
+          "description": "Fraud is the act of deceiving a natural or legal person by the use of a false name or a fictitious capacity by the abuse of a genuine capacity, or by means of unlawful manoeuvres, in order to obtain from that person to his or her prejudice or to the prejudice of a third party:<br>(1)the transfer of funds, valuables or any property;<br>(2)the provision of a service; or<br>(3)the making of a document incurring or discharging an obligation."
+        },
+        "khmer": {
+          "title": "មាត្រា ៣៧៧.- និយមន័យនៃការឆបោក",
+          "description": "អំពើឆបោក គឺជាអំពើបន្លំចំពោះរូបវន្តបុគ្គល ឬនីតិបុគ្គលណាមួយ ដោយប្រើ ឈ្មោះក្លែង ដោយអះអាងទៅលើឋានៈក្លែង ដោយរំលោភលើឋានៈពិតប្រាកដ ឬ ដោយប្រើឧបាយកលទុច្ចរិត ហើយដូចេ្នះបានទទួលពីបុគ្គលនេះ ដែលនាំឱ្យខូច ប្រយោជន៍របស់បុគ្គលនេះ ឬរបស់តតិយជននូវ : <br>១-ការប្រគល់មូលនិធិ តម្លៃ ឬទ្រព្យសម្បត្តិអ្វីមួយ ។ <br>២-ការផ្គត់ផ្គង់សេវា ។ <br>៣-ការធើ្វលិខិតដែលមានតម្លៃជាកាតព្វកិច្ច ឬជាការឱ្យរួចពីកាតព្វកិច្ច ។"
+        }
+      },
+      "មាត្រា ៣៩១.- និយមន័យនៃការរំលោភលើទំនុកចិត្ត": {
+        "english": {
+          "title": "Article 391: Definition of breach of trust",
+          "description": "Breach of trust is committed when a person, to the prejudice of other persons, misappropriates funds, valuables or any property that were handed over to him or her and that he or she accepted subject to the condition of returning, redelivering, presenting or using them in a specified way."
+        },
+        "khmer": {
+          "title": "មាត្រា ៣៩១.- និយមន័យនៃការរំលោភលើទំនុកចិត្ត",
+          "description": "អំពើរំលោភលើទំនុកចិត្ត គឺជាអំពើគៃបំបាត់មូលនិធិ តម្លៃ ឬទ្រព្យសម្បត្តិអ្វីមួយ នាំឱ្យខូចប្រយោជន៍អ្នកដទៃ ប្រព្រឹត្តដោយបុគ្គលណាម្នាក់ដែលគេបានប្រគល់ឱ្យបុគ្គលនោះ ហើយបុគ្គលនោះបានយល់ព្រម ដោយមានភារកិច្ចប្រគល់សងវិញ បង្ហាញ ឬយកមូលនិធិ តម្លៃ ឬទ្រព្យសម្បត្តិនោះ ទៅធ្វើការប្រើប្រាស់ជាកំណត់ ។"
+        }
+      },
+      "មាត្រា ៣៥៣.- និយមន័យនៃអំពើលួច": {
+        "english": {
+          "title": "Article 353: Definition of theft",
+          "description": "Theft is the fraudulent taking by any means of property belonging to another person with intent to keep it."
+        },
+        "khmer": {
+          "title": "មាត្រា ៣៥៣.- និយមន័យនៃអំពើលួច",
+          "description": "អំពើលួច គឺជាអំពើដកហូតដោយទុច្ចរិតនូវទ្រព្យសម្បត្តិ ឬវត្ថុផេ្សងទៀត របស់អ្នកដទៃ តាមគ្រប់មធ្យោបាយក្នុងគោលបំណងយកមកធ្វើជាកម្មសិទ្ធិរបស់ខ្លួន ។"
+        }
+      },
+      "មាត្រា ៣៦៣.- និយមន័យនៃការកំហែងយក": {
+        "english": {
+          "title": "Article 363: Definition of extortion",
+          "description": "Extortion is the act of obtaining by violence, threat of violence or corecion:<br>(1)a signature or fingerprint;<br>(2)a commitment or an abandonment;<br>(3)the disclosure of a secret;<br>(4)the handing over of funds, valuables or of any asset."
+        },
+        "khmer": {
+          "title": "មាត្រា ៣៦៣.- និយមន័យនៃការកំហែងយក",
+          "description": "អំពើកំហែងយក គឺជាអំពើដែលប្រព្រឹត្តដោយការប្រើហិង្សា ការគំរាមកំហែងថានឹងប្រើហិង្សា ឬដោយការបង្ខិតបង្ខំ ដើម្បីទទួលបាននូវ : <br>១-ហត្ថលេខា ឬស្នាមម្រាមដៃ ។ <br>២-ការសន្យា ឬការបោះបង់ចោលអ្វីមួយ ។ <br>៣-ការបង្ហាញអាថ៌កំបាំងណាមួយ ។ <br>៤-ការប្រគល់មូលនិធិ តម្លៃ ឬទ្រព្យសម្បត្តិអ្វីមួយ ។"
+        }
+      },
+      "មាត្រា ១៩៩.- បទឃាតកម្ម": {
+        "english": {
+          "title": "Article 199: Definition of murder",
+          "description": "Murder shall mean the wilful killing of another person with or without a weapon with no aggravating circumstances within the meaning of Article 200 (Definition of premeditated murder) to Article 205 (Murder accompanied by torture, cruelty or rape) of this Code. <br>Murder shall be punishable by imprisonment from ten to fifteen years."
+        },
+        "khmer": {
+          "title": "មាត្រា ១៩៩.- បទឃាតកម្ម",
+          "description": "អំពើសម្លាប់មនុស្សដោយចេតនា ដោយប្រើអាវុធ ឬមិនប្រើអាវុធ ដោយគ្មានស្ថានទម្ងន់ណាមួយដូចបានកំណត់ក្នុងមាត្រា ២០០ (បទឃាតកម្មគិតទុកជាមុន) ដល់មាត្រា ២០៥ (បទឃាតកម្មដោយមានទារុណកម្ម អំពើឃោរឃៅ ឬអំពើរំលោភសេពសន្ថវៈ) នៃក្រមនេះ គឺជាឃាតកម្ម ។ <br>ឃាតកម្មត្រូវផ្តន្ទាទោសដាក់ពន្ធនាគារពី ១០ (ដប់) ឆ្នាំ ទៅ ១៥ (ដប់ប្រាំ) ឆ្នាំ ។"
+        }
+      }
+    };
+
+    $('#clipboard').click(function() {
+      copy();
+  });
+    function copy() {
+      // Get the text field
+      var offense = document.getElementById('optionh').innerHTML;
+      var selectedOffense = offenses[offense];
+      var text = selectedOffense[language].title+"\n"+selectedOffense[language].description;
+      text = text.replace(/\<br\>/g,"\n");
+       // Copy the text inside the text field
+      navigator.clipboard.writeText(text);
+
+      // Alert the copied text
+      if(language==="english")
+      {
+        alert("Article copied!");
+      }
+      else{
+        alert("មាត្រាត្រូវបានចម្លង!");
+      }
+    }
+
+
+    // Function to update title and definition based on selected language
+   function updateLanguage() {
+     var offense = document.getElementById('optionh').innerHTML;
+     var selectedOffense = offenses[offense];
+
+     // Check if the selected offense exists in the offenses object
+     if (selectedOffense) {
+       $('#selectedTitle').html(selectedOffense[language].title);
+       $('#selectedDefinition').html(selectedOffense[language].description);
+     }
+     if((language==="english"))
+     {
+       $('#uk').show();
+       $('#kh').hide();
+     }
+     else {
+       $('#uk').hide();
+       $('#kh').show();
+     }
+   }
+
+    // Initial language setup
+    updateLanguage();
+
+
+    $('#languageSwitchInCard').click(function() {
+      language = (language === "english") ? "khmer" : "english";
+      updateLanguage();
+  });
+
+
+    $('.dropdown ul li').click(function() {
+      $('.dropdown ul li').removeClass('selected'); // Remove selected class from all options
+      $(this).addClass('selected'); // Add selected class to the clicked option
+
+      // Update dropdown h1 with selected option text
+      $('.dropdown h1').html($(this).html());
+
+      // Get selected title and definition
+      var selectedTitle = $(this).text();
+      // Example definition
+      var title = offenses[selectedTitle][language].title;
+      var description = offenses[selectedTitle][language].description;
+      // Update card with selected title and definition
+      $('#selectedTitle').html(title);
+      $('#selectedDefinition').html(description);
+      $('.card').show(); // Show the card
+
+      // Hide dropdown options
+      $('.dropdown ul').hide();
+    });
+
+    $('.dropdown ul li').hover(function() {
+      $(this).addClass('hover');
+    }, function() {
+      $(this).removeClass('hover');
+    });
+
+    $('.dropdown').hover(function() {
+      $(this).find('ul').show();
+    }, function() {
+      $(this).find('ul').hide();
+    });
+  });
+  </script>
+
+  </body>
+  </html>
