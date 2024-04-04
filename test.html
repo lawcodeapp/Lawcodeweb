@@ -400,6 +400,8 @@
   });
 
 
+
+
     $('.dropdown ul li').click(function() {
       $('.dropdown ul li').removeClass('selected'); // Remove selected class from all options
       $(this).addClass('selected'); // Add selected class to the clicked option
@@ -421,11 +423,15 @@
       $('.dropdown ul').hide();
     });
 
-    $('.dropdown ul li').hover(function() {
-      $(this).addClass('hover');
-    }, function() {
-      $(this).removeClass('hover');
+    $('#optionh').click(function() {
+      $('.dropdown ul').show();
     });
+
+    //$('.dropdown ul li').hover(function() {
+      //$(this).addClass('hover');
+    //}, function() {
+      //$(this).removeClass('hover');
+    //});
 
     $('.dropdown').hover(function() {
       $(this).find('ul').show();
