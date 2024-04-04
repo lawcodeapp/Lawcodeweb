@@ -7,7 +7,7 @@ let url = window.location.href;
 let words = ["រដ្ឋធម្មនុញ្ញ", "ក្រមព្រហ្មទណ្ឌ","ក្រមនីតិវិធីព្រហ្មទណ្ឌ", "ក្រមរដ្ឋប្បវេណី","ក្រមនីតិវិធីរដ្ឋប្បវេណី"];
 let words2 = ["", "","", "",""];
 
-if(url=="https://www.khmerlawcode.com/Lawcodeweb/eng.html"){
+if(url=="https://www.khmerlawcode.com/Lawcodeweb/eng"){
   words = ["Constitution", "Criminal Code","Criminal              ", "Civil Code","Civil              "];
   words2 = ["", "","Procedure Code", "","Procedure Code"];
 }
