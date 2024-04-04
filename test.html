@@ -271,7 +271,7 @@
   <body>
     <div class="dropdown">
       <h1 class="hanuman-bold" id="optionh">និយមន័យបទល្មើស</h1>
-      <ul>
+      <ul id="ulh">
         <li class="hanuman-bold" data-value="#FF3B30FF">មាត្រា ៣៧៧.- និយមន័យនៃការឆបោក</li>
         <li class="hanuman-bold" data-value="#FF3B30FF">មាត្រា ៣៩១.- និយមន័យនៃការរំលោភលើទំនុកចិត្ត</li>
         <li class="hanuman-bold" data-value="#FF3B30FF">មាត្រា ៣៥៣.- និយមន័យនៃអំពើលួច</li>
@@ -404,13 +404,14 @@
 
     $('.dropdown ul li').click(function() {
       $('.dropdown ul li').removeClass('selected'); // Remove selected class from all options
-      $(this).addClass('selected'); // Add selected class to the clicked option
+      var $selectedLi = $(this);
+      $selectedLi.addClass('selected'); // Add selected class to the clicked option
 
       // Update dropdown h1 with selected option text
-      $('.dropdown h1').html($(this).html());
+      $('.dropdown h1').html($selectedLi.html());
 
       // Get selected title and definition
-      var selectedTitle = $(this).text();
+      var selectedTitle = $selectedLi.text();
       // Example definition
       var title = offenses[selectedTitle][language].title;
       var description = offenses[selectedTitle][language].description;
@@ -434,9 +435,9 @@
     //});
 
     $('.dropdown').hover(function() {
-      $(this).find('ul').show();
+      $('#ulh').show();
     }, function() {
-      $(this).find('ul').hide();
+      $('#ulh').hide();
     });
   });
   </script>
